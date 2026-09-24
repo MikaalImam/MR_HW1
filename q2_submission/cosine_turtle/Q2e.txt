@@ -1,0 +1,18 @@
+In terminal 1 start the turtle sim
+
+ros2 run turtlesim turtlesim_node
+
+In terminal 2 send the instructions 
+
+First rotate the turtle 45 degrees = 0.7854
+ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute "{theta: 0.7854}"
+
+then start moving the turtle at 2m/s
+ros2 topic pub /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 0.0}}"
+
+to get the loco of the house first stop the turtle form moving using 
+ctrl+C 
+in terminal 2
+
+then to get the location
+ros2 topic echo /turtle1/pose --once
